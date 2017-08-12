@@ -2,7 +2,91 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 
+var articleOne = {
+    title:'Article One | Pramod Gopinath',
+    heading: 'Article One',
+    date:'August 09,2017',
+    content:
+`<p>
 
+This is the content for my first article.This is the content for my first article. This is the content for my first article.    This is the content for my first article.This is the content for my first article.
+
+
+</p>
+<p>
+
+This is the content for my first article.This is the content for my first article. This is the content for my first article.    This is the content for my first article.This is the content for my first article.
+
+
+</p>
+<p>
+
+This is the content for my first article.This is the content for my first article. This is the content for my first article.    This is the content for my first article.This is the content for my first article.
+
+
+</p>`
+};
+
+function createtemplate(data)
+{var title=data.title;
+var date=data.date;
+var heading=data.heading;
+var content=data.content;
+var htmltemplate =`
+    <html>
+    <head>
+        <title>
+    ${title}
+        </title>
+        <meta name="viewport" content="width=device-width, initial scale=1"/>
+         <link href="/ui/style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container"> 
+    <div>
+        
+        <a href="/">Home</a>
+</div>    
+<hr/>
+<h3>
+${heading}
+
+</h3>
+<div>
+${date}
+
+</div>
+<div>
+${content}
+        </div>
+        
+        </div>
+    </body>
+   </html> 
+   `;
+   return htmltemplate;
+}
+
+    
+    
+    
+
+
+    
+
+
+
+
+
+
+
+
+var app = express();
+app.use(morgan('combined'));
+
+app.get('/', function (req, res) {
+  res.send(createtemplate(articleOne));
+});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
