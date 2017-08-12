@@ -85,7 +85,7 @@ var app = express();
 app.use(morgan('combined'));
 
 app.get('/', function (req, res) {
-  res.send(createtemplate(articleOne)));
+  res.send(createtemplate(articleOne));
 });
 
 app.get('/ui/style.css', function (req, res) {
