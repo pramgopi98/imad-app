@@ -90,7 +90,7 @@ return htmlTemplate;
 
 
 app.get('/', function (req, res) {
-  res.send(createtemplate(articleOne));
+  res.send(createTemplate(articleOne));
 });
 
 app.get('/ui/style.css', function (req, res) {
