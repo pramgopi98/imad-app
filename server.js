@@ -150,6 +150,19 @@ app.get('/', function (req, res) {
 });
 
 
+var names = [];
+app.get('/submit-name/' , function(req, res){// URL:/submit-name?name=xxxx    
+    //  Get the name from the request
+    var name = req.query.name;
+    names.push(name);
+   // JSON JavaScript Object Notation
+   
+    res.send(JSON.stringify(names));//TODO
+    
+});
+
+
+
 app.get('/:articleName', function (req, res) {
     var articleName = req.params.articleName;
   res.send(createTemplate(articles[articleName]));
@@ -167,16 +180,6 @@ app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
 
-var names = [];
-app.get('/submit-name/' , function(req, res){// URL:/submit-name?name=xxxx    
-    //  Get the name from the request
-    var name = req.query.name;
-    names.push(name);
-   // JSON JavaScript Object Notation
-   
-    res.send(JSON.stringify(names));//TODO
-    
-});
 
 
 // Do not change port, otherwise your app won't run on IMAD servers
