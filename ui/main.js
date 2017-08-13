@@ -8,10 +8,8 @@ button.onclick=function(){
         if(request.readyState===XMLHttprequest.DONE){
             //Take some action
             if(request.status===200){
-                var counter=request.responseText;
-                counter=counter+1;
-                var span= document.getElementById('count');
-                span.innerHTML = counter.toString();
+                
+               
     
                 
             }
@@ -29,11 +27,20 @@ var submit = document.getElementById('submit_btn');
 submit.onclick = function(){
 //make a request to the server and send the name.
 //Capture a list of names and render it as a list.
-var names = ['name1','name2','name3','name4'];
-var list = '';
-for(var i =0;i<names.length;i++){
-    list+='<li>'+names[i]+'</li>';
-}
+request.onreadystatechange = function(){
+        if(request.readyState===XMLHttprequest.DONE){
+            //Take some action
+            if(request.status===200){
+               var names = ['name1','name2','name3','name4'];
+               var list = '';
+               for(var i =0;i<names.length;i++){
+            list+='<li>'+names[i]+'</li>';
+     }
 var ul = document.getElementById('namelist');
-ul.innerHTML = list;
-};
+ul.innerHTML = list; 
+               
+    
+                
+            }
+
+
