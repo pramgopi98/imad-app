@@ -170,7 +170,7 @@ app.get('/ui/main.js', function (req, res) {
 var nmes = [];
 app.get('/submit-name/:name' , function(req, res){
     //  Get the name from the request
-    var name = reqparams.name;
+    var name = req.params.name;
     name.push(name);
    // JSON JavaScript Object Notation
    
