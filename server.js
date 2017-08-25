@@ -82,8 +82,8 @@ function hash(input,salt){
     
     //how to create hash
     var hashed = crypto.pkbdf2Sync(input,salt,10000,512,'sha512');//pbkdf-password based key derivative function.
-    return hashedtoString('hex');
-}
+    return ["pbkdf2", "10000", salt, hashed.toString('hex')].join('$');
+    }
 app.get('/hash/:input', function(req,res){
     var hashedString = hash(req.params.input,'this-is-some-random-string');//hash function to be written.
     res.send(hashedString);
