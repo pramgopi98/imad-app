@@ -81,7 +81,7 @@ app.get('/counter', function(req,res){
 function hash(input,salt){
     
     //how to create hash
-    var hashed = crypto.pkbdf2Sync(input,salt,10000,512,'sha512');
+    var hashed = crypto.pkbdf2Sync(input,salt,10000,512,'sha512');//pbkdf-password based key derivative function.
     return hashedtoString('hex');
 }
 app.get('/hash/:input', function(req,res){
